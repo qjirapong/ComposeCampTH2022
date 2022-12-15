@@ -25,9 +25,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
 import androidx.compose.samples.crane.R
 import androidx.compose.samples.crane.data.ExploreModel
 import androidx.compose.samples.crane.home.OnExploreItemClicked
@@ -69,7 +67,14 @@ fun ExploreSection(
                 ExploreList(exploreList, onItemClicked, listState = listState)
 
                 // TODO: bad practice , use derivedStateOf
-                val showButton = listState.firstVisibleItemIndex > 0
+                //Recomposition every time list is scrolled
+                //Fix to remember state
+                val showButton by remember {
+                    //Input more than output
+                    derivedStateOf {
+                        listState.firstVisibleItemIndex > 0
+                    }
+                }
                 if (showButton) {
                     val scope = rememberCoroutineScope()
                     FloatingActionButton(
