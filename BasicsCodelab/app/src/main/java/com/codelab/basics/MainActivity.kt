@@ -123,11 +123,11 @@ private fun Greeting(name: String) {
 }
 
 @Composable
-private fun CardContent(name: String) {
+private fun CardContent(name: String, modifier: Modifier = Modifier) {
     var expanded by rememberSaveable { mutableStateOf(false) }
 
     Row(
-        modifier = Modifier
+        modifier = modifier
             .padding(12.dp)
             .animateContentSize(
                 animationSpec = spring(
@@ -137,7 +137,7 @@ private fun CardContent(name: String) {
             )
     ) {
         Column(
-            modifier = Modifier
+            modifier = modifier
                 .weight(1f)
                 .padding(12.dp)
         ) {
