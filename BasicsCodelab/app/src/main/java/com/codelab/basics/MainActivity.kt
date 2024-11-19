@@ -128,7 +128,6 @@ private fun CardContent(name: String, modifier: Modifier = Modifier) {
 
     Row(
         modifier = modifier
-            .padding(12.dp)
             .animateContentSize(
                 animationSpec = spring(
                     dampingRatio = Spring.DampingRatioMediumBouncy,
@@ -138,8 +137,8 @@ private fun CardContent(name: String, modifier: Modifier = Modifier) {
     ) {
         Column(
             modifier = modifier
-                .weight(1f)
-                .padding(12.dp)
+                .weight(4f)
+                .padding(24.dp)
         ) {
             Text(text = "Hello, ")
             Text(
