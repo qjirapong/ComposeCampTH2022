@@ -129,9 +129,8 @@ private fun CardContent(name: String, modifier: Modifier = Modifier) {
     Row(
         modifier = modifier
             .animateContentSize(
-                animationSpec = spring(
-                    dampingRatio = Spring.DampingRatioMediumBouncy,
-                    stiffness = Spring.StiffnessLow
+                animationSpec = tween(
+                    durationMillis = 300,
                 )
             )
     ) {
